@@ -22,20 +22,20 @@ class MainScreen extends StatelessWidget {
     final controller = Get.put(EntrypointController());
     return Obx(
       () => Scaffold(
-        bottomSheet: Container(
-          height: 6,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              stops: [0.5, 0],
-              colors: [
-                kPrimary,
-                kSecondary,
-              ],
-            ),
-          ),
-        ),
+        // bottomSheet: Container(
+        //   height: 6,
+        //   decoration: const BoxDecoration(
+        //     gradient: LinearGradient(
+        //       begin: Alignment.centerLeft,
+        //       end: Alignment.centerRight,
+        //       stops: [0.5, 0],
+        //       colors: [
+        //         kPrimary,
+        //         kSecondary,
+        //       ],
+        //     ),
+        //   ),
+        // ),
         body: Stack(
           children: [
            pageList[controller.tabIndex],

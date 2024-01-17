@@ -23,7 +23,7 @@ class Temas {
 
   // Tema Dark
   static final darkTheme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: kBackgroundLight,
+    scaffoldBackgroundColor: kBackgroundDark,
     textTheme: ThemeData.light().textTheme.apply(
           fontFamily: 'Sarpanch',
           bodyColor: Colors.white,

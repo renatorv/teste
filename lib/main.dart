@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:teste/app/routes/entrypoint_routes.dart';
 
@@ -6,8 +7,14 @@ import 'app/core/ui/preferencia_tema.dart';
 import 'app/core/ui/temas.dart';
 import 'app/entrypoint.dart';
 
-Widget defaultHome =  const MainScreen();
+Widget defaultHome = const MainScreen();
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: kDark,
+    ),
+  );
   runApp(const MyApp());
 }
 
