@@ -10,6 +10,7 @@ class Temas {
   Temas._();
     // Tema Light
   static final lightTheme = ThemeData.light().copyWith(
+    splashColor: Colors.transparent,
     scaffoldBackgroundColor: kBackgroundLight,
     textTheme: ThemeData.light().textTheme.apply(
           fontFamily: 'Sarpanch',
@@ -23,6 +24,7 @@ class Temas {
 
   // Tema Dark
   static final darkTheme = ThemeData.dark().copyWith(
+    splashColor: Colors.transparent,
     scaffoldBackgroundColor: kBackgroundDark,
     textTheme: ThemeData.light().textTheme.apply(
           fontFamily: 'Sarpanch',

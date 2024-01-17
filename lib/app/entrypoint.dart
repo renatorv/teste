@@ -3,9 +3,9 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:teste/app/core/ui/temas.dart';
 import 'package:teste/app/modules/entrypoint/settings/settings_page.dart';
-import 'package:teste/app/modules/entrypoint_controller.dart';
 
-// import 'core/utils/responsive.dart';
+import 'core/utils/responsive.dart';
+import 'entrypoint_controller.dart';
 import 'modules/entrypoint/home/home_page.dart';
 
 class MainScreen extends StatelessWidget {
@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Responsive responsive = Responsive(context);
+    Responsive responsive = Responsive(context);
     final controller = Get.put(EntrypointController());
     return Obx(
       () => Scaffold(
@@ -38,12 +38,14 @@ class MainScreen extends StatelessWidget {
         // ),
         body: Stack(
           children: [
-           pageList[controller.tabIndex],
+            pageList[controller.tabIndex],
             Align(
               alignment: Alignment.bottomCenter,
               child: Theme(
                 data: Theme.of(context).copyWith(canvasColor: kDark),
                 child: BottomNavigationBar(
+                  type: BottomNavigationBarType.shifting,
+                  elevation: 2,
                   showSelectedLabels: false,
                   showUnselectedLabels: false,
                   unselectedIconTheme: const IconThemeData(color: Colors.grey),
@@ -53,15 +55,18 @@ class MainScreen extends StatelessWidget {
                     controller.setTabIndex = value;
                   },
                   currentIndex: controller.tabIndex,
-                  items: const [
+                  items: [
                     BottomNavigationBarItem(
-                      icon: Icon(AntDesign.home),
-                      //icon: controller.tabIndex == 0 ? const Icon(AntDesign.appstore1) : const Icon(AntDesign.appstore_o),
+                      icon: controller.tabIndex == 0
+                          ? Icon(Ionicons.home, size: responsive.dp(4.2))
+                          : Icon(Ionicons.home_outline, size: responsive.dp(4.2)),
                       label: 'Home',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(AntDesign.setting),
-                      label: 'Configurações',
+                      icon: controller.tabIndex == 0
+                          ? Icon(Ionicons.settings_outline, size: responsive.dp(4.2))
+                          : Icon(Ionicons.settings, size: responsive.dp(4.2)),
+                      label: 'Setting',
                     ),
                   ],
                 ),
