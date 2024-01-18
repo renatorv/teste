@@ -10,6 +10,7 @@ import 'modules/entrypoint/home/home_page.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+  static const String ROUTE_PAGE = '/entry-point';
 
   final List<Widget> pageList = const [
     HomePage(),

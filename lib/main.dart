@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:teste/app/routes/auth_routers.dart';
 import 'package:teste/app/routes/entrypoint_routes.dart';
 
 import 'app/core/ui/preferencia_tema.dart';
@@ -53,8 +54,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         debugShowCheckedModeBanner: false,
         darkTheme: Temas.darkTheme,
         theme: Temas.lightTheme,
-        home: defaultHome,
+        // home: defaultHome,
         getPages: [
+          ...AuthRouters.routers,
           ...EntrypointRoutes.routers,
         ],
       ),
