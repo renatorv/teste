@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                       text: 'Olá, ',
                       style: TextStyle(
                         color: Theme.of(context).brightness == Brightness.light ? kOffBlack : kOffWhite,
-                        fontSize: responsive.dp(3.2),
+                        fontSize: responsive.dp(2.6),
                       ),
                       children: const [
                         TextSpan(
@@ -59,17 +59,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Theme.of(context).brightness == Brightness.light
-                      ? Image.asset('assets/images/logo_preta.png')
-                      : Image.asset('assets/images/logo_branca.png'),
+                      ? Image.asset('assets/images/logo_preta.png',scale: 1.5)
+                      : Image.asset('assets/images/logo_branca.png',scale:1.5)
                 ],
               ),
             ),
             CustomContainer(
               containerContent: Column(
                 children: [
-                  SizedBox(height: responsive.hp(3)),
+                  SizedBox(height: responsive.hp(2)),
                   SizedBox(
-                    height: responsive.hp(42),
+                    height: responsive.hp(38),
                     child: CustomScrollView(
                       slivers: [
                         SliverGrid(
@@ -126,8 +126,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  SizedBox(height: responsive.hp(1)),
                   SizedBox(
-                    height: responsive.dp(28),
+                    height: responsive.dp(30),
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
@@ -193,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: responsive.hp(2))
+                  SizedBox(height: responsive.hp(1))
                 ],
               ),
             ),

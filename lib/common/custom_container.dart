@@ -13,7 +13,7 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive responsive = Responsive(context);
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .77,
+      height: MediaQuery.of(context).size.height * .75,
       width: responsive.width,
       child: ClipRRect(
         borderRadius: BorderRadius.only(
