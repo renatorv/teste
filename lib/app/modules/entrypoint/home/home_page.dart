@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:teste/app/core/ui/temas.dart';
 import 'package:teste/common/constants/constants.dart';
 import 'package:teste/common/custom_container.dart';
@@ -17,12 +18,14 @@ class _HomePageState extends State<HomePage> {
   late List<GDPData> _chartData;
   late List<DisponibilidadeDados> _disponibilidadeDados;
   late TooltipBehavior _tooltipBehavior;
+  late TooltipBehavior _tooltipBarrasBehavior;
 
   @override
   void initState() {
     _chartData = getChartData();
     _disponibilidadeDados = getDisponibilidadeDados();
     _tooltipBehavior = TooltipBehavior(enable: true, format: 'point.x: point.y%');
+    _tooltipBarrasBehavior = TooltipBehavior(enable: true, format: 'point.x: point.y%');
     super.initState();
   }
 
@@ -59,8 +62,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Theme.of(context).brightness == Brightness.light
-                      ? Image.asset('assets/images/logo_preta.png',scale: 1.5)
-                      : Image.asset('assets/images/logo_branca.png',scale:1.5)
+                      ? Image.asset('assets/images/logo_preta.png', scale: 1.5)
+                      : Image.asset('assets/images/logo_branca.png', scale: 1.5)
                 ],
               ),
             ),
@@ -158,10 +161,9 @@ class _HomePageState extends State<HomePage> {
                                 dataSource: _disponibilidadeDados,
                                 xValueMapper: (DisponibilidadeDados data, _) => data.desc,
                                 yValueMapper: (DisponibilidadeDados data, _) => data.valor,
-                                dataLabelMapper: (DisponibilidadeDados data,_) => '${data.valor}%',
+                                dataLabelMapper: (DisponibilidadeDados data, _) => '${data.valor}%',
                                 dataLabelSettings: const DataLabelSettings(isVisible: true),
                                 enableTooltip: true,
-
                               ),
                             ],
                           ),
@@ -189,6 +191,68 @@ class _HomePageState extends State<HomePage> {
                                 enableTooltip: true,
                               ),
                             ],
+                          ),
+                        ),
+                        SizedBox(width: responsive.wp(1)),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(responsive.wp(12)),
+                            color: Theme.of(context).brightness == Brightness.light ? kWhite : kOffBlack,
+                          ),
+                          width: responsive.wp(85),
+                          child: SfCartesianChart(
+                            title: const ChartTitle(text: 'Colunas'),
+                            legend: const Legend(isVisible: true),
+                            tooltipBehavior: _tooltipBarrasBehavior,
+                            series: [
+                              ColumnSeries<GDPData, String>(
+                                isVisibleInLegend: false,
+                                name: 'Colunas',
+                                dataSource: _chartData,
+                                xValueMapper: (GDPData data, _) => data.continent,
+                                yValueMapper: (GDPData data, _) => data.gdp,
+                                dataLabelSettings: const DataLabelSettings(isVisible: true),
+                                enableTooltip: true,
+                                color:  const Color(0xFFFF8628),
+                              ),
+                            ],
+                            primaryXAxis: const CategoryAxis(),
+                            primaryYAxis:  NumericAxis(
+                              edgeLabelPlacement: EdgeLabelPlacement.shift,
+                              numberFormat: NumberFormat.simpleCurrency(decimalDigits: 0),
+                              // title: const AxisTitle(text: 'Valores'),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: responsive.wp(1)),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(responsive.wp(12)),
+                            color: Theme.of(context).brightness == Brightness.light ? kWhite : kOffBlack,
+                          ),
+                          width: responsive.wp(85),
+                          child: SfCartesianChart(
+                            title: const ChartTitle(text: 'Barras'),
+                            legend: const Legend(isVisible: true),
+                            tooltipBehavior: _tooltipBarrasBehavior,
+                            series: [
+                              BarSeries<GDPData, String>(
+                                isVisibleInLegend: false,
+                                name: 'Barras',
+                                dataSource: _chartData,
+                                xValueMapper: (GDPData data, _) => data.continent,
+                                yValueMapper: (GDPData data, _) => data.gdp,
+                                dataLabelSettings: const DataLabelSettings(isVisible: true),
+                                enableTooltip: true,
+                                color:  const Color(0xFFFF8628),
+                              ),
+                            ],
+                            primaryXAxis: const CategoryAxis(),
+                            primaryYAxis:  NumericAxis(
+                              edgeLabelPlacement: EdgeLabelPlacement.shift,
+                              numberFormat: NumberFormat.simpleCurrency(decimalDigits: 0),
+                              // title: const AxisTitle(text: 'Valores'),
+                            ),
                           ),
                         ),
                       ],
