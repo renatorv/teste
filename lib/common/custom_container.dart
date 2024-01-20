@@ -13,7 +13,7 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive responsive = Responsive(context);
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .86,
+      height: MediaQuery.of(context).size.height * .77,
       width: responsive.width,
       child: ClipRRect(
         borderRadius: BorderRadius.only(
@@ -21,7 +21,7 @@ class CustomContainer extends StatelessWidget {
           bottomRight: Radius.circular(responsive.dp(5)),
         ),
         child: Container(
-          padding: EdgeInsets.only(top: responsive.hp(2), left: responsive.hp(2.5), right: responsive.hp(2.5)),
+          padding: EdgeInsets.only( left: responsive.hp(2.5), right: responsive.hp(2.5)),
           width: responsive.width,
           color: Theme.of(context).brightness == Brightness.light ? kBackgroundLight : kBackgroundDark,
           child: SingleChildScrollView(

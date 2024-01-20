@@ -65,8 +65,8 @@ class MainScreen extends StatelessWidget {
                     ),
                     BottomNavigationBarItem(
                       icon: controller.tabIndex == 0
-                          ? Icon(Ionicons.settings_outline, size: responsive.dp(4.2))
-                          : Icon(Ionicons.settings, size: responsive.dp(4.2)),
+                          ? Icon(FontAwesome.gears, size: responsive.dp(4.2))
+                          : Icon(FontAwesome.gears, size: responsive.dp(4.2), color: kPrimary,),
                       label: 'Setting',
                     ),
                   ],
